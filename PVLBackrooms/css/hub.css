@@ -18,8 +18,26 @@
   --cor--destaque: #00a17b;
   --cor--hover: #8d8d8d;
 }
+.themeTurtle{
+  /* Tema Escuro Turtle */
+  --cor--texto: #ebebeb;
+  --cor--fundo: #3c3c3c;
+  --cor--fundo--dois: #2c2c2c;
+  --cor--fundo--tres: #1d1d1d;
+  --cor--destaque: #4bb766;
+  --cor--hover: #404040;
+  }
+.lightMode.themeTurtle{
+  /* Tema Claro Turtle */
+  --cor--texto: #1d1d1d;
+  --cor--fundo: #ffffff;
+  --cor--fundo--dois: #ebebeb;
+  --cor--fundo--tres: #d9d9d9;
+  --cor--destaque: #00a17b;
+  --cor--hover: #8d8d8d;
+}
 .themeRoses{
-  /* Tema Escuro Rose */
+  /* Tema Escuro Roses */
   --cor--texto: #ebebeb;
   --cor--fundo: #3c3c3c;
   --cor--fundo--dois: #2c2c2c;
@@ -28,7 +46,7 @@
   --cor--hover: #404040;
 }
 .lightMode.themeRoses{
-  /* Tema Escuro Rose */
+  /* Tema Escuro Roses */
   --cor--texto: #1d1d1d;
   --cor--fundo: #ffffff;
   --cor--fundo--dois: #ebebeb;
@@ -227,6 +245,11 @@ body{
 @media(max-width: 800px){
   body{
     grid-template-columns: 1fr;
+    grid-template-areas: 
+    "box-2"
+    "box-3"
+    "box-4"
+    "box-1";
   }
   .sidebar{
     height: 60px;
@@ -240,7 +263,7 @@ body{
     overflow-y: hidden;
     overflow-x: scroll;
 
-    > ul{
+    ul{
       padding: 0;
       display: grid;
       grid-auto-columns: 60px;
@@ -403,6 +426,7 @@ a{
   grid-template-rows: 0fr;
   transition: 0.3s ease-in-out;
   overflow-x: hidden;
+  z-index: 2;
 }
 .navbar .sub-menu-header.closed{
   display: none;

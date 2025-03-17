@@ -113,3 +113,30 @@ themeSwitch.addEventListener("click", () => {
     disablelightMode();
   }
 })
+
+const themeOptTurtle = document.getElementById('theme-turtle');
+const themeOptRoses = document.getElementById('theme-roses');
+let themeSet = localStorage.setItem('themeSet', 'turtle');
+
+const setThemeTurtle = () => {
+  document.body.classList.remove('themeRoses')
+  document.body.classList.add('themeTurtle')
+}
+
+const setThemeRoses = () => {
+  document.body.classList.remove('themeTurtle')
+  document.body.classList.add('themeRoses')
+}
+
+themeOptTurtle.addEventListener('click', () =>{
+  themeSet = localStorage.getItem('themeSet')
+  if(themeSet !== "turtle"){
+    setThemeTurtle();
+  }
+  else if(themeSet !== "roses"){
+    setThemeRoses()
+  }
+})
+themeOptRoses.addEventListener('click', () =>{
+  themeSet = localStorage.getItem('themeSet')
+})
