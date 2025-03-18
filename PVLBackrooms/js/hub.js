@@ -53,39 +53,68 @@ function closeAllSubMenus(){
   })
 }
 
-const configButton = document.getElementById('config-btn');
-const configMenu = document.getElementById('config-menu');
+const languageButton = document.getElementById('language-btn');
+const languageMenu = document.getElementById('language-menu');
 const infoButton = document.getElementById('info-btn');
 const infoMenu = document.getElementById('info-menu');
+const paletteButton = document.getElementById('palette-btn');
+const paletteMenu = document.getElementById('palette-menu');
 const mainDiv = document.getElementById('main');
 
-configButton.addEventListener('click', () =>{
-  configButton.classList.toggle('closed')
-  configMenu.classList.toggle('closed')
+languageButton.addEventListener('click', () =>{
+  languageButton.classList.toggle('closed');
+  languageMenu.classList.toggle('closed');
+
   if(!infoMenu.classList.contains('closed')){
-    infoMenu.classList.toggle('closed')
-    infoButton.classList.toggle('closed')
+    infoMenu.classList.toggle('closed');
+    infoButton.classList.toggle('closed');
+  }
+  if(!paletteMenu.classList.contains('closed')){
+    paletteMenu.classList.toggle('closed');
+    paletteButton.classList.toggle('closed');
   }
 })
 
 infoButton.addEventListener('click', () =>{
-  infoButton.classList.toggle('closed')
-  infoMenu.classList.toggle('closed')
-  if(!configMenu.classList.contains('closed')){
-    configMenu.classList.toggle('closed')
-    configButton.classList.toggle('closed')
+  infoButton.classList.toggle('closed');
+  infoMenu.classList.toggle('closed');
+
+  if(!languageMenu.classList.contains('closed')){
+    languageMenu.classList.toggle('closed');
+    languageButton.classList.toggle('closed');
+  }
+  if(!paletteMenu.classList.contains('closed')){
+    paletteMenu.classList.toggle('closed');
+    paletteButton.classList.toggle('closed');
+  }
+})
+
+paletteButton.addEventListener('click', () =>{
+  paletteButton.classList.toggle('closed');
+  paletteMenu.classList.toggle('closed');
+
+  if(!languageMenu.classList.contains('closed')){
+    languageMenu.classList.toggle('closed');
+    languageButton.classList.toggle('closed');
+  }
+  if(!infoMenu.classList.contains('closed')){
+    infoMenu.classList.toggle('closed');
+    infoButton.classList.toggle('closed');
   }
 })
 
 mainDiv.addEventListener('click', () =>{
-  console.log('teste')
-  if(!configMenu.classList.contains('closed')){
-    configMenu.classList.toggle('closed')
-    configButton.classList.toggle('closed')
+  if(!languageMenu.classList.contains('closed')){
+    languageMenu.classList.toggle('closed');
+    languageButton.classList.toggle('closed');
   }
   if(!infoMenu.classList.contains('closed')){
-    infoMenu.classList.toggle('closed')
-    infoButton.classList.toggle('closed')
+    infoMenu.classList.toggle('closed');
+    infoButton.classList.toggle('closed');
+  }
+  if(!paletteMenu.classList.contains('closed')){
+    paletteMenu.classList.toggle('closed');
+    paletteButton.classList.toggle('closed');
   }
 })
 
@@ -116,27 +145,93 @@ themeSwitch.addEventListener("click", () => {
 
 const themeOptTurtle = document.getElementById('theme-turtle');
 const themeOptRoses = document.getElementById('theme-roses');
-let themeSet = localStorage.setItem('themeSet', 'turtle');
+let setTheme = localStorage.getItem('setTheme');
 
-const setThemeTurtle = () => {
-  document.body.classList.remove('themeRoses')
-  document.body.classList.add('themeTurtle')
+const themeTurtle = () => {
+  document.body.classList.remove('themeRoses', 'themeVioletNeon');
+  document.body.classList.add('themeTurtle');
+  localStorage.setItem('setTheme', 'themeTurtle');
+}
+const themeRoses = () => {
+  document.body.classList.remove('themeTurtle', 'themeVioletNeon');
+  document.body.classList.add('themeRoses');
+  localStorage.setItem('setTheme', 'themeRoses');
+}
+const themeVioletNeon = () => {
+  document.body.classList.remove('themeTurtle', 'themeRoses');
+  document.body.classList.add('themeVioletNeon');
+  localStorage.setItem('setTheme', 'themeVioletNeon');
 }
 
-const setThemeRoses = () => {
-  document.body.classList.remove('themeTurtle')
-  document.body.classList.add('themeRoses')
+if(setTheme === 'themeTurtle'){
+  themeTurtle();
+}
+else if(setTheme === 'themeRoses'){
+  themeRoses();
+}
+else if(setTheme === 'themeVioletNeon'){
+  themeVioletNeon();
 }
 
-themeOptTurtle.addEventListener('click', () =>{
-  themeSet = localStorage.getItem('themeSet')
-  if(themeSet !== "turtle"){
-    setThemeTurtle();
+function setThemeFunction(nameTheme){
+  setTheme = localStorage.getItem('setTheme');
+  if (nameTheme == 1){
+    themeTurtle();
   }
-  else if(themeSet !== "roses"){
-    setThemeRoses()
+  else if (nameTheme == 2){
+    themeRoses();
   }
-})
-themeOptRoses.addEventListener('click', () =>{
-  themeSet = localStorage.getItem('themeSet')
-})
+  else if (nameTheme == 3){
+    themeVioletNeon();
+  }
+}
+
+
+// function setThemeTurtle(){
+//   console.log('tema tartaruga')
+//   setTheme = localStorage.getItem('setTheme')
+//   localStorage.setItem('setTheme', 'themeTurtle')
+//   if(setTheme == 'themeTurtle'){
+//     document.body.classList.remove('themeRoses')
+//     document.body.classList.add('themeTurtle')
+//   }
+// }
+// function setThemeRoses(){
+//   console.log('tema rosas')
+//   setTheme = localStorage.getItem('setTheme')
+//   localStorage.setItem('setTheme', 'themeRoses')
+//   if(setTheme == 'themeRoses'){
+//     document.body.classList.remove(('themeTurtle'))
+//     document.body.classList.add('themeRoses')
+//   }
+// }
+
+// if(setTheme == 'themeTurtle'){
+//   setThemeTurtle()
+// }
+// else if(setTheme == 'themeRoses'){
+//   setThemeRoses()
+// }
+
+// const setThemeTurtle = () => {
+//   document.body.classList.remove('themeRoses')
+//   document.body.classList.add('themeTurtle')
+// }
+
+// const setThemeRoses = () => {
+//   document.body.classList.remove('themeTurtle')
+//   document.body.classList.add('themeRoses')
+// }
+
+// themeOptTurtle.addEventListener('click', () =>{
+//   themeSet = localStorage.getItem('themeSet')
+//   if(themeSet !== "turtle"){
+//     setThemeTurtle();
+//   }
+//   else if(themeSet !== "roses"){
+//     setThemeRoses()
+//   }
+// })
+// themeOptRoses.addEventListener('click', () =>{
+//   themeSet = localStorage.getItem('themeSet')
+// })
